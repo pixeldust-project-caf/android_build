@@ -1056,6 +1056,13 @@ define generate_generic_boot_image_certificate
     --name "$(3)" --output "$(2)" "$(1)"
 endef
 
+INSTALLED_DTIMAGE_TARGET := $(PRODUCT_OUT)/dt.img
+
+ifeq ($(strip $(BOARD_KERNEL_SEPARATED_DT)),true)
+  INTERNAL_BOOTIMAGE_ARGS += --dt $(INSTALLED_DTIMAGE_TARGET)
+  BOOTIMAGE_EXTRA_DEPS    := $(INSTALLED_DTIMAGE_TARGET)
+endif
+
 INTERNAL_GKI_CERTIFICATE_ARGS :=
 INTERNAL_GKI_CERTIFICATE_DEPS :=
 
