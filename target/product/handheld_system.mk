@@ -88,5 +88,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_VENDOR_PROPERTIES += \
     ro.carrier?=unknown \
-    ro.config.notification_sound?=OnTheHunt.ogg \
-    ro.config.alarm_alert?=Alarm_Classic.ogg
+    ro.config.ringtone=The_big_adventure.ogg \
+    ro.config.notification_sound=Popcorn.ogg \
+    ro.config.alarm_alert=Bright_morning.ogg
