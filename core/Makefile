@@ -5440,7 +5440,7 @@ endif
 ifeq ($(TARGET_BUILD_VARIANT),user)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
 else
-ifneq ($(AOSP_BUILD),)
+ifneq ($(PIXELDUST_BUILD),)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := true
 else
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
