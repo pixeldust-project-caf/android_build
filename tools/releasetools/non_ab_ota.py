@@ -220,6 +220,40 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
 
+  pixeldust_version = target_info.GetBuildProp("ro.pixeldust.version")
+  android_version = target_info.GetBuildProp("ro.build.version.release")
+  build_id = target_info.GetBuildProp("ro.build.id")
+  build_date = target_info.GetBuildProp("ro.build.date")
+  security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
+  device = target_info.GetBuildProp("ro.pixeldust.device")
+  maintainer = target_info.GetBuildProp("ro.pixeldust.maintainer")
+
+  script.Print(" =============================================");
+  script.Print(" ");
+  script.Print("    __________.__              .__   ");
+  script.Print("    \\______   \\__|__  ___ ____ |  |  ");
+  script.Print("     |     ___/  \\  \\/  /\\/ __ \\|  |  ");
+  script.Print("     |    |   |  |>    <\\  ___/|  |__");
+  script.Print("     |____|   |__/__/\\_ \\\\___  >____/");
+  script.Print("                       \\/    \\/      ");
+  script.Print("    ________                  __     ");
+  script.Print("    \\______ \\  __ __  _______/  |_   ");
+  script.Print("     |    |  \\|  |  \\/  ___/\\   __\\  ");
+  script.Print("     |    `   \\  |  /\\___ \\  |  |    ");
+  script.Print("    /_______  /____//____  > |__|    ");
+  script.Print("            \\/           \\/          ");
+  script.Print(" ");
+  script.Print(" =============================================");
+  script.Print(" %s"%(pixeldust_version));
+  script.Print(" =============================================");
+  script.Print(" Android version  : %s"%(android_version));
+  script.Print(" Build id         : %s"%(build_id));
+  script.Print(" Build date       : %s"%(build_date));
+  script.Print(" Security patch   : %s"%(security_patch));
+  script.Print(" Device           : %s"%(device));
+  script.Print(" Maintainer       : %s"%(maintainer));
+  script.Print("==============================================");
+
   device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
