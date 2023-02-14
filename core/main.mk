@@ -366,31 +366,16 @@ user_variant :=
 endif
 enable_target_debugging := true
 tags_to_install :=
+
+# Set device insecure for all builds.
+ADDITIONAL_SYSTEM_PROPERTIES += ro.secure=0
+
 ifneq (,$(user_variant))
-  # Target is secure in user builds.
-  ADDITIONAL_SYSTEM_PROPERTIES += ro.secure=1
-  ADDITIONAL_SYSTEM_PROPERTIES += security.perf_harden=1
-
-  ifeq ($(user_variant),user)
-    ADDITIONAL_SYSTEM_PROPERTIES += ro.adb.secure=1
-  endif
-
-  ifeq ($(user_variant),userdebug)
-    # Pick up some extra useful tools
-    tags_to_install += debug
-  else
-    # Disable debugging in plain user builds.
-    enable_target_debugging :=
-  endif
-
   # Disallow mock locations by default for user builds
   ADDITIONAL_SYSTEM_PROPERTIES += ro.allow.mock.location=0
-
 else # !user_variant
   # Turn on checkjni for non-user builds.
   ADDITIONAL_SYSTEM_PROPERTIES += ro.kernel.android.checkjni=1
-  # Set device insecure for non-user builds.
-  ADDITIONAL_SYSTEM_PROPERTIES += ro.secure=0
   # Allow mock locations by default for non user builds
   ADDITIONAL_SYSTEM_PROPERTIES += ro.allow.mock.location=1
 endif # !user_variant
