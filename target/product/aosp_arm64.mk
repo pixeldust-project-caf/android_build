@@ -68,13 +68,6 @@ MODULE_BUILD_FROM_SOURCE ?= true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_release.mk)
 endif
 
-#
-# The Bluetooth namespace needs to be selected to include the default
-# Bluetooth implementation
-#
-PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
-PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/system/bt/conf
-
 
 PRODUCT_NAME := aosp_arm64
 PRODUCT_DEVICE := generic_arm64
