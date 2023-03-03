@@ -63,11 +63,6 @@ MODULE_BUILD_FROM_SOURCE ?= true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_release.mk)
 endif
 
-#
-# The Bluetooth namespace needs to be selected to include the default
-# Bluetooth implementation
-#
-PRODUCT_SOONG_NAMESPACES += packages/apps/Bluetooth
 
 PRODUCT_NAME := aosp_arm
 PRODUCT_DEVICE := generic
