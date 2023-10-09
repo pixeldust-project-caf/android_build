@@ -722,7 +722,14 @@ function maybe_source_extra_commands() {
         return
     }
 
-    local EXTRA_CMDS_ARR=(vendor/*/"$PRODUCT"/"$SCRIPT_NAME")
+
+    if (echo -n $1 | grep -q -e "^pixeldust_") ; then
+        # Remove the prefix for pixeldust products
+        local PD_PRODUCT=$(echo -n $1 | sed -e 's/^pixeldust_//g')
+        local EXTRA_CMDS_ARR=(vendor/*/"$PD_PRODUCT"/"$SCRIPT_NAME")
+    else
+        local EXTRA_CMDS_ARR=(vendor/*/"$PRODUCT"/"$SCRIPT_NAME")
+    fi
 
     [[ ${#EXTRA_CMDS_ARR[@]} == 0 ]] && {
         return
