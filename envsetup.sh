@@ -717,11 +717,10 @@ function maybe_source_extra_commands() {
     local PRODUCT=$1
     local SCRIPT_NAME="cmds-for-envsetup.sh"
 
-    [[ $PRODUCT = sdk_* || $PRODUCT = aosp_* ]] && {
+    [[ $PRODUCT = sdk_* || $PRODUCT = aosp_* || $PRODUCT = pixeldust_blueline || $PRODUCT = pixeldust_crosshatch ]] && {
         # skip for products that are known to not have this extra script
         return
     }
-
 
     if (echo -n $1 | grep -q -e "^pixeldust_") ; then
         # Remove the prefix for pixeldust products
